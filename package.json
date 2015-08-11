@@ -14,7 +14,9 @@
     "url": "https://github.com/b-html/html2bhtml/issues"
   },
   "dependencies": {
+    "commander-b": "^0.2.2",
     "es6-promise": "^3.0.2",
+    "fs-extra": "^0.23.1",
     "html-parser": "^0.8.0"
   },
   "devDependencies": {
