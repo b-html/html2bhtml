@@ -10,6 +10,10 @@
   "bugs": {
     "url": "https://github.com/b-html/html2bhtml/issues"
   },
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "html-parser": "^0.8.0"
+  },
   "devDependencies": {
     "coffee-script": "^1.9.3",
     "del": "^1.2.0",
