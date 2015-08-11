@@ -7,6 +7,9 @@
     "email": "m@bouzuya.net",
     "url": "http://bouzuya.net"
   },
+  "bin": {
+    "html2bhtml": "./bin/html2bhtml"
+  },
   "bugs": {
     "url": "https://github.com/b-html/html2bhtml/issues"
   },
@@ -37,6 +40,7 @@
   ],
   "homepage": "https://github.com/b-html/html2bhtml#readme",
   "keywords": [
+    "CLI",
     "HTML",
     "b-html"
   ],
