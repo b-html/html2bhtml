@@ -24,7 +24,12 @@ $(npm bin)/html2bhtml index.html
 
 # convert src/**/*.html to dst/**/*.bhtml
 $(npm bin)/html2bhtml -o dst/ src/
+
+# (option: remove white spaces)
+$(npm bin)/html2bhtml -s -o dst/ src/
 ```
+
+See also: `html2bhtml --help`
 
 ### `npm install --global html2bhtml`
 
@@ -34,7 +39,12 @@ html2bhtml index.html
 
 # convert src/**/*.html to dst/**/*.bhtml
 html2bhtml -o dst/ src/
+
+# (option: remove white spaces)
+html2bhtml -s -o dst/ src/
 ```
+
+See also: `html2bhtml --help`
 
 ## API
 
