@@ -319,6 +319,19 @@ describe 'index', ->
       '''
       assert html2bhtml(html) is bHtml
 
+    it '<p>\\ntext\\n</p>', ->
+      html = '''
+        <p>
+        text
+        </p>
+      '''
+      bHtml = '''
+        <p
+          |text
+          |
+      '''
+      assert html2bhtml(html) is bHtml
+
     it '<p>\\n\\ntext</p>', ->
       html = '''
         <p>
@@ -648,6 +661,18 @@ describe 'index', ->
       html = '''
         <p>
         text</p>
+      '''
+      bHtml = '''
+        <p
+          >text
+      '''
+      assert html2bhtml(html, removeWhiteSpace: true) is bHtml
+
+    it '<p>\\ntext\\n</p>', ->
+      html = '''
+        <p>
+        text
+        </p>
       '''
       bHtml = '''
         <p
