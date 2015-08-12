@@ -83,7 +83,7 @@ parse = (html, { removeWhiteSpace } = {}) ->
         ) + ']]>'
     text: (value) ->
       # console.log('text: %s', value)
-      value = value.replace(/^\s*([\s\S]*?)\s*$/, '$1') if removeWhiteSpace
+      value = value.trim() if removeWhiteSpace
       return if value.length is 0
       indent = [0...level].map(-> ' ').join('')
       value = '>' + value.split(/\n/).map((i) -> i).join('\n' + indent + '|')
