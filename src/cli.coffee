@@ -11,17 +11,18 @@ class CLI
     command.version @_getVersion()
     command
     .option '-o, --output <dir>', 'the output directory for converted b-html'
-    .action (file, { output } = {}) =>
-      @_compileRecursive file, dir: output
+    .option '-s, --sgml-line-break', 'ignore line break following a start tag and before an end tag'
+    .action (file, { output, sgmlLineBreak } = {}) =>
+      @_compileRecursive file, dir: output, removeWhiteSpace: sgmlLineBreak
     command.execute()
     .catch (e) ->
       console.error e
 
-  _compile: (srcFile, { dir } = {}) ->
+  _compile: (srcFile, { dir, removeWhiteSpace } = {}) ->
     ext = path.extname srcFile
     return if ext isnt '.html'
     data = fs.readFileSync srcFile, encoding: 'utf-8'
-    bhtml = html2bhtml data
+    bhtml = html2bhtml data, { removeWhiteSpace }
     dir ?= path.dirname srcFile
     base = path.basename srcFile, ext
     dstFile = path.join dir, base + '.bhtml'
