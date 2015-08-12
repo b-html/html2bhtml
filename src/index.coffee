@@ -22,7 +22,7 @@ formatElement = (node) ->
       '\n' + indent + '</' + node.name +
       node.attributes.map(formatAttribute).join('')
 
-parse = (html) ->
+parse = (html, { removeWhiteSpace } = {}) ->
   root =
     name: 'root'
     attributes: []
@@ -83,6 +83,8 @@ parse = (html) ->
         ) + ']]>'
     text: (value) ->
       # console.log('text: %s', value)
+      value = value.replace(/^\s*([\s\S]*)\s*$/, '$1') if removeWhiteSpace
+      return if value.length is 0
       indent = [0...level].map(-> ' ').join('')
       value = '>' + value.split(/\n/).map((i) -> i).join('\n' + indent + '|')
       value = value.replace /^>\n\s*\|/, '|'
@@ -92,6 +94,6 @@ parse = (html) ->
         content: value
   root
 
-module.exports = (html) ->
-  root = parse html
+module.exports = (html, { removeWhiteSpace } = {}) ->
+  root = parse html, { removeWhiteSpace }
   format root
