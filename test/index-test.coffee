@@ -236,6 +236,15 @@ describe 'index', ->
       '''
       assert html2bhtml(html) is bHtml
 
+    it '<p>\n  <![CDATA[hoge\\n  fuga]]></p>', ->
+      html = '''
+        <p>
+          <![CDATA[hoge
+          fuga]]></p>
+      '''
+      bHtml = '<p\n  |  \n  ><![CDATA[hoge\n  |  fuga]]>'
+      assert html2bhtml(html) is bHtml
+
     it '<![CDATA[\\n]]>', ->
       html = '''
         <![CDATA[
@@ -356,6 +365,24 @@ describe 'index', ->
           |text
           |  text
       '''
+      assert html2bhtml(html) is bHtml
+
+    it '<p>\\n  <!-- comment\\n  comment --></p>', ->
+      html = '''
+        <p>
+          <!-- comment
+          comment --></p>
+      '''
+      bHtml = '<p\n  |  \n  ><!-- comment\n  |  comment -->'
+      assert html2bhtml(html) is bHtml
+
+    it '<p>\\n  <![CDATA[hoge\\n  fuga]]></p>', ->
+      html = '''
+        <p>
+          <![CDATA[hoge
+          fuga]]></p>
+      '''
+      bHtml = '<p\n  |  \n  ><![CDATA[hoge\n  |  fuga]]>'
       assert html2bhtml(html) is bHtml
 
   context 'removeWhiteSpace', ->
@@ -702,5 +729,31 @@ describe 'index', ->
         <p
           >text
           |  text
+      '''
+      assert html2bhtml(html, removeWhiteSpace: true) is bHtml
+
+    it '<p>\\n  <!-- comment\\n  comment --></p>', ->
+      html = '''
+        <p>
+          <!-- comment
+          comment --></p>
+      '''
+      bHtml = '''
+        <p
+          ><!-- comment
+          |  comment -->
+      '''
+      assert html2bhtml(html, removeWhiteSpace: true) is bHtml
+
+    it '<p>\\n  <![CDATA[hoge\\n  fuga]]></p>', ->
+      html = '''
+        <p>
+          <![CDATA[hoge
+          fuga]]></p>
+      '''
+      bHtml = '''
+        <p
+          ><![CDATA[hoge
+          |  fuga]]>
       '''
       assert html2bhtml(html, removeWhiteSpace: true) is bHtml

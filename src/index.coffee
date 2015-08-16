@@ -70,23 +70,20 @@ parse = (html, { removeWhiteSpace } = {}) ->
       node.children.push
         level: level + 2
         type: 'text'
-        content:  '><!--' + value.replace(/\n/g, '\n|') + '-->'
+        content:  '><!--' + value.replace(/\n/g, "\n#{indent}|") + '-->'
     cdata: (value) ->
       # console.log('cdata: %s', value)
+      indent = [0...level].map(-> ' ').join('')
       node.children.push
         level: level + 2
         type: 'text'
-        content:  '><![CDATA[' + (if value.length is 1
-          value.replace /\n/g, '\n|'
-        else
-          value.replace /\n/g, '\n|'
-        ) + ']]>'
+        content:  '><![CDATA[' + value.replace(/\n/g, "\n#{indent}|") + ']]>'
     text: (value) ->
       # console.log('text: %s', value)
       value = value.trim() if removeWhiteSpace
       return if value.length is 0
       indent = [0...level].map(-> ' ').join('')
-      value = '>' + value.split(/\n/).map((i) -> i).join('\n' + indent + '|')
+      value = '>' + value.split(/\n/).map((i) -> i).join("\n#{indent}|")
       value = value.replace /^>\n\s*\|/, '|'
       node.children.push
         level: level + 2
