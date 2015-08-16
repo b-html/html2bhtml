@@ -12,6 +12,8 @@ $ npm install html2bhtml
 
 html2bhtml's CLI is deprecated. You can use [b-html-cli](https://github.com/b-html/b-html-cli).
 
+See: [b-html-cli](https://github.com/b-html/b-html-cli).
+
 ## API
 
 ```javascript
