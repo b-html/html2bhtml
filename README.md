@@ -8,43 +8,9 @@ Convert HTML to [b-html](https://github.com/b-html/b-html).
 $ npm install html2bhtml
 ```
 
-or
-
-```
-$ npm install --global html2bhtml
-```
-
 ## CLI
 
-### `npm install html2bhtml`
-
-```
-# convert index.html to index.bhtml
-$(npm bin)/html2bhtml index.html
-
-# convert src/**/*.html to dst/**/*.bhtml
-$(npm bin)/html2bhtml -o dst/ src/
-
-# (option: remove white spaces)
-$(npm bin)/html2bhtml -s -o dst/ src/
-```
-
-See also: `html2bhtml --help`
-
-### `npm install --global html2bhtml`
-
-```
-# convert index.html to index.bhtml
-html2bhtml index.html
-
-# convert src/**/*.html to dst/**/*.bhtml
-html2bhtml -o dst/ src/
-
-# (option: remove white spaces)
-html2bhtml -s -o dst/ src/
-```
-
-See also: `html2bhtml --help`
+html2bhtml's CLI is deprecated. You can use [b-html-cli](https://github.com/b-html/b-html-cli).
 
 ## API
 
