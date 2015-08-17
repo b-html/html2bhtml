@@ -7,7 +7,10 @@ format = (root) ->
 
 formatAttribute = (attr) ->
   indent = [0...(attr.level - 2)].map(-> ' ').join('')
-  '\n' + indent + '@' + attr.name + ' ' + attr.value
+  if attr.value?
+    '\n' + indent + '@' + attr.name + ' ' + attr.value
+  else
+    '\n' + indent + '@' + attr.name
 
 formatElement = (node) ->
   indent = [0...(node.level - 2)].map(-> ' ').join('')

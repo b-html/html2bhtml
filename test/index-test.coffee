@@ -74,6 +74,20 @@ describe 'index', ->
       '''
       assert html2bhtml(html) is bHtml
 
+    it '<p class></p>', ->
+      html = '''
+        <p class></p>
+      '''
+      bHtml = '<p\n  @class'
+      assert html2bhtml(html) is bHtml
+
+    it '<p class=""></p>', ->
+      html = '''
+        <p class=""></p>
+      '''
+      bHtml = '<p\n  @class '
+      assert html2bhtml(html) is bHtml
+
     it '<p class="foo"></p>', ->
       html = '''
         <p class="foo"></p>
@@ -453,6 +467,20 @@ describe 'index', ->
         </img
         </img
       '''
+      assert html2bhtml(html, removeWhiteSpace: true) is bHtml
+
+    it '<p class></p>', ->
+      html = '''
+        <p class></p>
+      '''
+      bHtml = '<p\n  @class'
+      assert html2bhtml(html, removeWhiteSpace: true) is bHtml
+
+    it '<p class=""></p>', ->
+      html = '''
+        <p class=""></p>
+      '''
+      bHtml = '<p\n  @class '
       assert html2bhtml(html, removeWhiteSpace: true) is bHtml
 
     it '<p class="foo"></p>', ->
