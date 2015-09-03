@@ -22,6 +22,10 @@ import html2bhtml from 'html2bhtml';
 html2bhtml('<p>Hello, b-html!</p>') === '<p\n  Hello, b-html!';
 ```
 
+## Badge
+
+[![Circle CI](https://circleci.com/gh/b-html/html2bhtml.svg?style=svg)](https://circleci.com/gh/b-html/html2bhtml)
+
 ## License
 
 [MIT](LICENSE)
